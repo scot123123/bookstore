@@ -19,4 +19,6 @@ public interface UserMapper<T> {
 
     //    @Insert("insert into user(name,password)values(#{name},#{password}")
     void save(T user);
+
+    User getUserById(T user);
 }

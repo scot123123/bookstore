@@ -2,6 +2,7 @@ package com.example.book.service;
 
 import com.example.book.dao.UserMapper;
 import com.example.book.entiy.User;
+import org.apache.maven.shared.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
@@ -26,5 +27,12 @@ public class UserService {
         userMapper.save(user);
     }
 
+    //查询对象通过id值
+    public User getUserById(User user){
+        if(user!=null){
+            return userMapper.getUserById(user);
+        }
+        return null;
+    }
 
 }

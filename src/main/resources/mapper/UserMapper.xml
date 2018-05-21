@@ -19,6 +19,10 @@
         SELECT ID,name,password FROM USER
     </select>
 
+    <!--查询对象通过id-->
+    <select id="getUserById" resultType="com.example.book.entiy.User" parameterType="com.example.book.entiy.User">
+        select id,name,password from user where name=#{name} and password=#{password}
+    </select>
     <!-- delete user -->
     <delete id="delete" parameterType="int">
         DELETE FROM USER WHERE ID=#{0}

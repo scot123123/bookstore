@@ -2,6 +2,7 @@ package com.example.book.controller;
 
 import com.example.book.entiy.User;
 import com.example.book.service.UserService;
+import org.apache.commons.lang3.StringUtils;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -34,5 +35,30 @@ public class UserController {
         return "listall";
 
     }
-    public void test(){}
+
+    /**
+     * 登陆方法判断用户
+     * @param name
+     * @param password
+     * @param request
+     * @return
+     */
+    @RequestMapping("/login")
+    public String login(String name,String password,HttpServletRequest request){
+        User use=null;
+
+        if(StringUtils.isNotEmpty(name)&&StringUtils.isNotEmpty(password)){
+            User user= new User();
+            user.setName(name);
+            user.setPassword(password);
+            use = userService.getUserById(user);
+        }
+        if(use!=null){
+            //设置返回的获取的对象
+            request.setAttribute("user",use);
+            return "success";
+        }
+        request.setAttribute("user",use);
+        return "error";
+    }
 }
