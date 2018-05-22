@@ -3,6 +3,7 @@ package com.example.book.dao;
 import com.example.book.entiy.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
 
@@ -20,5 +21,5 @@ public interface UserMapper<T> {
     //    @Insert("insert into user(name,password)values(#{name},#{password}")
     void save(T user);
 
-    User getUserById(T user);
+    User getUserById(@Param("name") String name,@Param("password") String password);
 }

@@ -3,7 +3,11 @@
 
 <!-- 指定工作空间，要与接口名相同，源代码没有去看，猜测应该是通过"这里的namespace.下边方法的id"来定位方法的 -->
 <mapper namespace="com.example.book.dao.UserMapper">
-
+    <resultMap id="resultMap" type="com.example.book.entiy.User">
+        <result column="id" property="id" ></result>
+        <result column="name" property="name"></result>
+        <result column="password" property="password"></result>
+    </resultMap>
     <!-- insert user -->
     <insert id="insert" parameterType="com.example.book.entiy.User">
         INSERT INTO USER(ID,USERNAME,PASSWORD,AGE) VALUES(#{id},#{username},#{password},#{age});
@@ -20,8 +24,8 @@
     </select>
 
     <!--查询对象通过id-->
-    <select id="getUserById" resultType="com.example.book.entiy.User" parameterType="com.example.book.entiy.User">
-        select id,name,password from user where name=#{name} and password=#{password}
+    <select id="getUserById" resultMap="resultMap" parameterType="String">
+        select * from user where name=#{name} and password=#{password}
     </select>
     <!-- delete user -->
     <delete id="delete" parameterType="int">

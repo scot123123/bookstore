@@ -7,7 +7,9 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -44,21 +46,16 @@ public class UserController {
      * @return
      */
     @RequestMapping("/login")
-    public String login(String name,String password,HttpServletRequest request){
+    @ResponseBody
+    public String login(HttpServletRequest request,String name,String password){
         User use=null;
-
-        if(StringUtils.isNotEmpty(name)&&StringUtils.isNotEmpty(password)){
-            User user= new User();
-            user.setName(name);
-            user.setPassword(password);
-            use = userService.getUserById(user);
-        }
-        if(use!=null){
+//        String name=request.getParameter("name");
+//        String password = request.getParameter("password");
+        User user = userService.getUserById(name, password);
+        if(user!=null){
             //设置返回的获取的对象
-            request.setAttribute("user",use);
-            return "success";
+            return "listall";
         }
-        request.setAttribute("user",use);
         return "error";
     }
 }

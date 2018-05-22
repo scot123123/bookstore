@@ -30,6 +30,9 @@
                         dataType:"json",
                         data:{"name":name,"password":password},
                         success:function(data){
+                            if(data!=null){
+                                console.debug(data);
+                            }
                             debugger;
                         }
                     })
