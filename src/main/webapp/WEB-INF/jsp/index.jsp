@@ -12,35 +12,35 @@
     <link rel="stylesheet" href="/common/bootstrap/css/bootstrap.css">
     <script src="/common/jquery-1.10.2.js"></script>
     <script src="/common/bootstrap/js/bootstrap.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            $("#but").click(function() {
-                alert("1111");
-            });
-            submit();
-        });
-        function submit(){
-            $("#onClicId").click(function(){
-                debugger;
-                var name=$("#name").val();
-                var password=$("#password").val();
-                if(name!=null&&password!=null&&name!=""&&password!=""){
-                    $.ajax({
-                        url:"/login",
-                        dataType:"json",
-                        data:{"name":name,"password":password},
-                        success:function(data){
-                            if(data!=null){
-                                console.debug(data);
-                            }
-                            debugger;
-                        }
-                    })
-                }
-            });
-
-        }
-    </script>
+    <%--<script type="text/javascript">--%>
+        <%--// $(function() {--%>
+        <%--//     $("#but").click(function() {--%>
+        <%--//         alert("1111");--%>
+        <%--//     });--%>
+        <%--//     submit();--%>
+        <%--// });--%>
+        <%--// function submit(){--%>
+        <%--//     $("#onClicId").click(function(){--%>
+        <%--//         debugger;--%>
+        <%--//         var name=$("#name").val();--%>
+        <%--//         var password=$("#password").val();--%>
+        <%--//         if(name!=null&&password!=null&&name!=""&&password!=""){--%>
+        <%--//             $.ajax({--%>
+        <%--//                 url:"/login",--%>
+        <%--//                 dataType:"json",--%>
+        <%--//                 data:{"name":name,"password":password},--%>
+        <%--//                 success:function(data){--%>
+        <%--//                     if(data!=null){--%>
+        <%--//                         console.debug(data);--%>
+        <%--//                     }--%>
+        <%--//                     debugger;--%>
+        <%--//                 }--%>
+        <%--//             })--%>
+        <%--//         }--%>
+        <%--//     });--%>
+        <%--//--%>
+        <%--// }--%>
+    <%--</script>--%>
     <style type="text/css">
         #formId{
             padding-left: 40%;
@@ -49,12 +49,12 @@
     </style>
 </head>
 <body>
-    <form id="formId" class="navbar-form navbar-left" role="search">
+    <form id="formId" action="/login" method="post" class="navbar-form navbar-left" role="search">
         <div class="form-group">
-            <input  id="name" type="text" class="form-control" placeholder="姓名"/>
+            <input  id="name" name="name" type="text" class="form-control" placeholder="姓名"/>
         </div>
         <div style="margin-top: 10px">
-            <input id="password" type="text" class="form-control" placeholder="密码"/>
+            <input id="password" name="password" type="text" class="form-control" placeholder="密码"/>
         </div>
         <button id="onClicId" type="submit" class="btn btn-default" style="margin-top: 10px">提交</button>
     </form>

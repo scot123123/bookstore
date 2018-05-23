@@ -3,10 +3,13 @@ package com.example.book.entiy;
 /**
  * Created by hewenlong on 2018/5/19.
  */
+
 public class User {
+
     private String id;
     private String name;
     private String password;
+
 
     public String getId() {
         return id;

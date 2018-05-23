@@ -15,7 +15,7 @@ public class BookApplicationTests {
     private UserMapper<User> userMapper;
     @Test
     public void contextLoads() {
-        User user = userMapper.getUserById("ceshi","123");
+        User user = userMapper.getUserById("test","123");
         if (user!=null){
             System.out.println(user.getName());
         }
