@@ -49,9 +49,9 @@ public class UserController {
         User user = userService.getUserById(name, password);
         if(user!=null){
             //设置返回的获取的对象
-            return "listall";
+            return "menu/menuList";
         }
-        return "error";
+        return "index";
 
     }
 

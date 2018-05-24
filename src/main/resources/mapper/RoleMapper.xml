@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 指定工作空间，要与接口名相同，源代码没有去看，猜测应该是通过"这里的namespace.下边方法的id"来定位方法的 -->
+<mapper namespace="com.example.book.dao.RoleMapper">
+    <resultMap id="resultMap" type="com.example.book.entiy.RoleInfo">
+        <result column="id" property="id" ></result>
+        <result column="role_name" property="roleName"></result>
+    </resultMap>
+    <!-- insert user -->
+    <insert id="insert" parameterType="com.example.book.entiy.RoleInfo">
+        INSERT INTO role_info(ID,role_name) VALUES(#{id},#{roleName});
+    </insert>
+
+    <!-- update user -->
+    <update id="edit" parameterType="com.example.book.entiy.RoleInfo">
+        UPDATE role_info SET role_name=#{roleName}  WHERE ID=#{id}
+    </update>
+
+    <!-- find user -->
+    <select id="findAll" resultType="com.example.book.entiy.RoleInfo">
+        SELECT ID,role_name FROM role_info
+    </select>
+
+    <!--查询对象通过id-->
+    <select id="getRoleByName" resultMap="resultMap" parameterType="String">
+        select * from role_info where role_name=#{roleName}
+    </select>
+    <!-- delete user -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM role_info WHERE ID=#{0}
+    </delete>
+</mapper>

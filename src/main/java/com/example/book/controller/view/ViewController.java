@@ -14,4 +14,9 @@ public class ViewController {
     public String index(){
         return "index";
     }
+
+    @RequestMapping("/menu")
+    public String menu(){
+        return "/menu/menuList";
+    }
 }
