@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 指定工作空间，要与接口名相同，源代码没有去看，猜测应该是通过"这里的namespace.下边方法的id"来定位方法的 -->
+<mapper namespace="com.example.book.dao.MenuMapper">
+    <resultMap id="resultMap" type="com.example.book.entiy.Menu">
+        <result column="id" property="id" ></result>
+        <result column="name" property="name"></result>
+        <result column="url" property="url"></result>
+    </resultMap>
+    
+    <sql id="re" >
+        id,name,url
+    </sql>
+    
+    <!-- insert user -->
+    <insert id="insert" parameterType="com.example.book.entiy.Menu">
+        INSERT INTO menu_info(ID,name,url) VALUES(#{id},#{name},#{url});
+    </insert>
+
+    <!-- update user -->
+    <update id="edit" parameterType="com.example.book.entiy.Menu">
+        UPDATE menu_info SET name=#{name} , url=#{url}  WHERE ID=#{id}
+    </update>
+
+    <!-- find user -->
+    <select id="findAll" resultType="com.example.book.entiy.Menu">
+        SELECT ID,name,url FROM menu_info
+    </select>
+
+    <!--查询对象通过id-->
+    <select id="getMenuByName" resultMap="resultMap" parameterType="String">
+        select * from menu_info where name=#{name} and url=#{url}
+    </select>
+    <!-- delete user -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM menu_info WHERE ID=#{0}
+    </delete>
+    <!--通过id查询对象-->
+    <select id="getMenuById" resultMap="resultMap" parameterType="String">
+        select
+        *
+        from menu_info where id=#{id}
+    </select>
+</mapper>
