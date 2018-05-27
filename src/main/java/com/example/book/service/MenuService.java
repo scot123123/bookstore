@@ -19,4 +19,11 @@ public class MenuService {
         return menuMapper.findAll();
     }
 
+    /**
+     * 查询所有的菜单
+     * @return
+     */
+    public List<Menu> selectMenusByUserId(){
+        return menuMapper.selectMenusByUserId();
+    }
 }

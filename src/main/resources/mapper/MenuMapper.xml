@@ -7,12 +7,20 @@
         <result column="id" property="id" ></result>
         <result column="name" property="name"></result>
         <result column="url" property="url"></result>
+        <result column="parent_id" property="parentId"></result>
+        <result column="order_num" property="orderNum"></result>
     </resultMap>
     
     <sql id="re" >
         id,name,url
     </sql>
-    
+
+    <select id="selectMenusByUserId"  resultMap="resultMap">
+        select distinct m.id, m.parent_id, m.name, m.url, m.order_num
+        from menu_info m
+        left join role_menu rm on rm.menuId = m.id
+        order by m.order_num
+    </select>
     <!-- insert user -->
     <insert id="insert" parameterType="com.example.book.entiy.Menu">
         INSERT INTO menu_info(ID,name,url) VALUES(#{id},#{name},#{url});

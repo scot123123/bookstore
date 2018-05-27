@@ -16,4 +16,6 @@ public interface MenuMapper<T> {
     List<Menu> findAll();
 
     T getMenuById(@Param("id") String id);
+
+    List<T> selectMenusByUserId();
 }
