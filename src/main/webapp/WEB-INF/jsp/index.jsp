@@ -12,35 +12,23 @@
     <link rel="stylesheet" href="/common/bootstrap/css/bootstrap.css">
     <script src="/common/jquery-1.10.2.js"></script>
     <script src="/common/bootstrap/js/bootstrap.js"></script>
-    <%--<script type="text/javascript">--%>
-        <%--// $(function() {--%>
-        <%--//     $("#but").click(function() {--%>
-        <%--//         alert("1111");--%>
-        <%--//     });--%>
-        <%--//     submit();--%>
-        <%--// });--%>
-        <%--// function submit(){--%>
-        <%--//     $("#onClicId").click(function(){--%>
-        <%--//         debugger;--%>
-        <%--//         var name=$("#name").val();--%>
-        <%--//         var password=$("#password").val();--%>
-        <%--//         if(name!=null&&password!=null&&name!=""&&password!=""){--%>
-        <%--//             $.ajax({--%>
-        <%--//                 url:"/login",--%>
-        <%--//                 dataType:"json",--%>
-        <%--//                 data:{"name":name,"password":password},--%>
-        <%--//                 success:function(data){--%>
-        <%--//                     if(data!=null){--%>
-        <%--//                         console.debug(data);--%>
-        <%--//                     }--%>
-        <%--//                     debugger;--%>
-        <%--//                 }--%>
-        <%--//             })--%>
-        <%--//         }--%>
-        <%--//     });--%>
-        <%--//--%>
-        <%--// }--%>
-    <%--</script>--%>
+    <script type="text/javascript">
+        function login(){
+            var name= $("#name").val();
+            var password = $("#password").val();
+            $.ajax({
+                url:"/login",
+                type:"POST",
+                data:{"name":name,"password":password},
+                success:function(re){
+                    if (re!=null) {
+                        debugger;
+                        parent.location.href = '/menu';
+                    }
+                }
+            })
+        }
+    </script>
     <style type="text/css">
         #formId{
             padding-left: 40%;
@@ -56,7 +44,7 @@
         <div style="margin-top: 10px">
             <input id="password" name="password" type="text" class="form-control" placeholder="密码"/>
         </div>
-        <button id="onClicId" type="submit" class="btn btn-default" style="margin-top: 10px">提交</button>
+        <button id="onClicId"  onclick="login()"  type="submit" class="btn btn-default" style="margin-top: 10px">提交</button>
     </form>
 </body>
 </html>
