@@ -7,17 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
  * Created by hewenlong on 2018/5/19.
  */
-@Controller
+@RestController
 @ComponentScan("com.example.book.service")
 @MapperScan("com.example.book.dao")
 public class UserController {
@@ -45,13 +43,14 @@ public class UserController {
      * @return
      */
     @RequestMapping(value="/login",method = RequestMethod.POST)
+    @ResponseBody
     public String login( @RequestParam("name")String name, @RequestParam("password")String password,ModelMap model){
         User user = userService.getUserById(name, password);
         if(user!=null){
             //设置返回的获取的对象
-            return "menu/menuList";
+            return "success";
         }
-        return "index";
+        return "error";
 
     }
 
