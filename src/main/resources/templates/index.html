@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/common/bootstrap/css/bootstrap.css">
+    <script src="/common/jquery-1.10.2.js"></script>
+    <script src="/common/bootstrap/js/bootstrap.js"></script>
+    <script src="/common/validate/jquery.validate.min.js" ></script>
+    <script src="/common/validate/messages_zh.min.js" ></script>
+    <script src="/common/iCheck/icheck.min.js" ></script>
+    <script src="/index.js"></script>
+    <script>
+        if(window.top!==window.self){window.top.location=window.location};
+    </script>
+    <script type="text/javascript">
+//        function login(){
+//            var name= $("#name").val();
+//            var password = $("#password").val();
+//            $.ajax({
+//                url:"/login",
+//                type:"POST",
+//                data:{"name":name,"password":password},
+//                success:function(re){
+//                    if("success"==re){
+//                        window.location.href="/menu";
+//                    }else{
+//                        alert("请确认输入的用户名和密码是否正确");
+//                    }
+//                }
+//            })
+//        }
+    </script>
+    <style type="text/css">
+        #signupForm{
+            padding-left: 40%;
+            padding-top: 18%;
+        }
+    </style>
+</head>
+<body>
+    <form id="signupForm">
+        <div class="form-group" style="padding-right: 60%">
+            <input  id="name" name="name" type="text" class="form-control uname" placeholder="姓名"/>
+        </div>
+        <div style="margin-top: 10px;padding-right: 60%">
+            <input id="password" name="password" type="text" class="form-control pword m-b" placeholder="密码"/>
+        </div>
+        <button class="btn btn-success btn-block" style="margin-top: 10px;padding-right: 60%">提交</button>
+    </form>
+</body>
+</html>

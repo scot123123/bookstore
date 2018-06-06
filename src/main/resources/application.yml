@@ -1,16 +1,11 @@
 
 spring:
-  mvc:
-    view:
-      prefix: /WEB-INF/jsp/
-      suffix: .jsp
-    static-path-pattern: /**
   datasource:
-    url: jdbc:mysql://localhost:3307/test?useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8
     username: root
-    password: 123456
+    password: 123
     driver-class-name: com.mysql.jdbc.Driver
     #mybatis配置文件的配置
 mybatis:
-  mapper-locations: classpath:/mapper/UserMapper.xml
+  mapper-locations: classpath:/mapper/*.xml
   type-aliases-package: com.example.book.entiy

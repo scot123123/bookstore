@@ -25,7 +25,8 @@ public class BookApplicationTests {
     private RoleMapper<RoleInfo> roleMapper;
     @Test
     public void contextLoads1() {
-        List<User> list = userMapper.findAll();
+//        List<User> list = userMapper.findAll();
+//        System.out.println("");
 //        for (User user:list) {
 //            if (user!=null){
 //                System.out.println(user.getName());
@@ -42,7 +43,8 @@ public class BookApplicationTests {
     }
     @Test
     public void contextLoads() {
-        Menu menus = menuMapper.getMenuById("1");
+//        Menu menus = menuMapper.getMenuById("1");
+        List<Menu> menuLisy = menuMapper.selectMenusByUserId();
         List<Menu> list = menuMapper.findAll();
         for (Menu menu:list) {
             if(menu!=null){

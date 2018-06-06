@@ -2,6 +2,7 @@ package com.example.book.service;
 
 import com.example.book.dao.MenuMapper;
 import com.example.book.entiy.Menu;
+import com.example.book.utils.TreeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,7 @@ public class MenuService {
      * @return
      */
     public List<Menu> selectMenusByUserId(){
-        return menuMapper.selectMenusByUserId();
+        List<Menu> list = menuMapper.selectMenusByUserId();
+        return TreeUtils.getChildPerms(list,"0");
     }
 }

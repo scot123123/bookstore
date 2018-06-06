@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by hewenlong on 2018/5/19.
  */
-@RestController
+@Controller
 @ComponentScan("com.example.book.service")
 @MapperScan("com.example.book.dao")
 public class UserController {

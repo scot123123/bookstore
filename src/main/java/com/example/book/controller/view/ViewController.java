@@ -25,7 +25,7 @@ public class ViewController {
     @RequestMapping("/menu")
     public String menu(Model model){
         List<Menu> menuLisy = menuService.selectMenusByUserId();
-        model.addAttribute("menus",menuLisy);
-        return "/menu/menuList";
+        model.addAttribute("menus", menuLisy);
+        return "menu/menuList";
     }
 }
